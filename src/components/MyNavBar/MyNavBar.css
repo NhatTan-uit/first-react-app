@@ -1,0 +1,14 @@
+.bg-navcuatan {
+    background-color: rgb(255, 214, 161);
+}
+
+.nav-mau-chu {
+    color: red;
+    margin: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-mau-chu:hover {
+    color: rgb(248, 155, 155)
+}

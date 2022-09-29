@@ -1,4 +1,6 @@
 .bg-navcuatan {
+    position: relative;
+    height: 60px;
     background-color: rgb(255, 214, 161);
 }
 
@@ -12,3 +14,78 @@
 .nav-mau-chu:hover {
     color: rgb(248, 155, 155)
 }
+
+.nav-links {
+    position: relative;
+    width: 300px;
+}
+
+.nav-drop-down-hidden {
+    position: absolute;
+    height: 60px;
+    padding-left: 5px;
+    padding-right: 5px;
+    top: -18px;
+    left: 145px;
+    padding-top: 18px;
+}
+
+.nav-drop-down {
+    position: absolute;
+    background-color: aliceblue;
+    height: 60px;
+    padding-left: 5px;
+    padding-right: 5px;
+    top: -18px;
+    left: 145px;
+    padding-top: 18px;
+}
+
+.drop-down-menu {
+    position: absolute;
+    top: 60px;
+    left: 0px;
+    height: 70vh;
+    width: 60vw;
+    background-color: red;
+}
+
+.drop-down-menu-hidden {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .drop-down-menu {
+        position: absolute;
+        top: 60px;
+        left: -150px;
+        height: 70vh;
+        width: 70vw;
+        background-color: red;
+    }
+
+    .drop-down-menu-hidden {
+        display: none;
+    }
+
+    .nav-drop-down-hidden {
+        position: absolute;
+        height: 60px;
+        padding-left: 5px;
+        padding-right: 5px;
+        top: -18px;
+        left: 145px;
+        padding-top: 18px;
+    }
+    
+    .nav-drop-down {
+        position: absolute;
+        background-color: aliceblue;
+        height: 60px;
+        padding-left: 5px;
+        padding-right: 5px;
+        top: -18px;
+        left: 145px;
+        padding-top: 18px;
+    }
+  }

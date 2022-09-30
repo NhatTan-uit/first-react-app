@@ -15,18 +15,33 @@
     color: rgb(248, 155, 155)
 }
 
+
 .nav-links {
+    display: flex;
+    width: 40vw;
+    min-width: 300px;
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: bisque;
+}
+
+.nav-links-items {
     position: relative;
-    width: 300px;
+    background-color: azure;
+    min-width: 100px;
+    height: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .nav-drop-down-hidden {
     position: absolute;
     height: 60px;
-    padding-left: 5px;
-    padding-right: 5px;
-    top: -18px;
-    left: 145px;
+    width: 100px;
+    top: -20px;
+    left: 0px;
     padding-top: 18px;
 }
 
@@ -34,10 +49,9 @@
     position: absolute;
     background-color: aliceblue;
     height: 60px;
-    padding-left: 5px;
-    padding-right: 5px;
-    top: -18px;
-    left: 145px;
+    width: 100px;
+    top: -20px;
+    left: 0px;
     padding-top: 18px;
 }
 
@@ -46,7 +60,7 @@
     top: 60px;
     left: 0px;
     height: 70vh;
-    width: 60vw;
+    width: 50vw;
     background-color: red;
 }
 
@@ -55,12 +69,31 @@
 }
 
 @media screen and (max-width: 992px) {
+    .nav-links {
+        display: flex;
+        width: 40vw;
+        min-width: 300px;
+        height: 60px;
+        justify-content: space-around;
+        align-items: center;
+        background-color: bisque;
+    }
+
+    .nav-links-items {
+        position: relative;
+        background-color: azure;
+        margin: 20px;
+        min-width: 60px;
+        height: 20px;
+        text-align: center;
+    }
+
     .drop-down-menu {
         position: absolute;
         top: 60px;
-        left: -150px;
+        left: -200px;
         height: 70vh;
-        width: 70vw;
+        width: 60vw;
         background-color: red;
     }
 
@@ -71,21 +104,19 @@
     .nav-drop-down-hidden {
         position: absolute;
         height: 60px;
-        padding-left: 5px;
-        padding-right: 5px;
-        top: -18px;
-        left: 145px;
+        width: 100px;
+        top: -20px;
+        left: 0px;
         padding-top: 18px;
     }
-    
+
     .nav-drop-down {
         position: absolute;
         background-color: aliceblue;
         height: 60px;
-        padding-left: 5px;
-        padding-right: 5px;
-        top: -18px;
-        left: 145px;
+        width: 100px;
+        top: -20px;
+        left: 0px;
         padding-top: 18px;
     }
-  }
+}

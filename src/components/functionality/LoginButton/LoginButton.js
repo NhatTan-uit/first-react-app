@@ -1,9 +1,10 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
+import './LoginButton.css'
 
 function LoginButton() {
   return (
-    <Button style={{marginLeft: '40px'}} as="input" type="submit" value="Login" />
+    <Button className="login-button" as="input" type="submit" value="Login" />
   )
 }
 

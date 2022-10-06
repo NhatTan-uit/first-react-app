@@ -4,7 +4,7 @@ import './SearchBar.css'
 
 function SearchBar() {
     return (
-        <form className="search-form" style={{ marginLeft: '40px' }}>
+        <form className="m-auto search-form">
             <input
                 type="text"
                 placeholder="Tim truyen"

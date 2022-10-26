@@ -1,3 +1,7 @@
+/* Them Route - Logic */
+
+const loginRouter = require("./routes/loginroute");
+
 /* Them thu vien */
 const express = require('express')
 const mongoose = require('mongoose');
@@ -25,9 +29,8 @@ connection.once("open", () =>
 
 
 /* Xu ly logic */
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use("/user", loginRouter);
+/// url localhost:4000/user/login
 
 
 /* port cua web service */

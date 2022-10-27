@@ -1,17 +1,26 @@
 import React, { useState } from 'react'
+
+import Dropdown from 'react-bootstrap/Dropdown';
+import Image from "react-bootstrap/Image";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
-import SearchBar from '../functionality/SearchBar/SearchBar';
-import LoginButton from '../functionality/LoginButton/LoginButton';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import MediaQuery from 'react-responsive'
+
+import { Link } from 'react-router-dom';
+
+import SearchBar from '../functionality/SearchBar/SearchBar';
+import LoginButton from '../functionality/authorization/LoginButton/LoginButton';
+
 import './MyNavBar.css';
+import Button from 'react-bootstrap/esm/Button';
 
 function MyNavBar() {
     const [dDMStatus, setDDMStatus] = useState('drop-down-menu-hidden');
     const [dDMLabelStatus, setDDMLabelStatus] = useState('nav-drop-down-hidden');
+
+    const checkIfLoggedUser = localStorage.getItem('user');
 
     return (
         <div>
@@ -64,9 +73,34 @@ function MyNavBar() {
                                     </div>
                                 </Nav>
                                 <SearchBar />
-                                <Nav.Item className="m-auto">
-                                    <LoginButton />
-                                </Nav.Item>
+                                {
+                                    checkIfLoggedUser != null ?
+                                        <Nav.Item className="m-auto">
+                                            <Dropdown>
+                                                <Dropdown.Toggle variant="outline" id="dropdown-basic">
+                                                    <Image
+                                                        className='nav-user-image'
+                                                        src=
+                                                        "https://cdn-icons-png.flaticon.com/512/1077/1077114.png?w=360"
+                                                        roundedCircle
+                                                    />
+                                                </Dropdown.Toggle>
+
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                                    <Dropdown.Item onClick={
+                                                        () => {
+                                                            localStorage.removeItem('user');
+                                                            window.location.reload();
+                                                        }}>Logout</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </Nav.Item>
+                                        : <Nav.Item className="m-auto">
+                                            <LoginButton />
+                                        </Nav.Item>
+                                }
                             </Offcanvas.Body>
                         </Navbar.Offcanvas>
                     </Container>

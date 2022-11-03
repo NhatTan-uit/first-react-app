@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+
+import axios from 'axios';
 
 import Dropdown from 'react-bootstrap/Dropdown';
 import Image from "react-bootstrap/Image";
@@ -14,20 +16,31 @@ import SearchBar from '../functionality/SearchBar/SearchBar';
 import LoginButton from '../functionality/authorization/LoginButton/LoginButton';
 
 import './MyNavBar.css';
-import Button from 'react-bootstrap/esm/Button';
 
 function MyNavBar() {
     const [dDMStatus, setDDMStatus] = useState('drop-down-menu-hidden');
     const [dDMLabelStatus, setDDMLabelStatus] = useState('nav-drop-down-hidden');
 
+    const [userImage, setUserImage] = useState('');
+
     const checkIfLoggedUser = localStorage.getItem('user');
+
+    useEffect(() => {
+        axios.get(`http://localhost:4000/userinfo/showuser/${checkIfLoggedUser}`)
+            .then(res => {
+                setUserImage(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }, [])
 
     return (
         <div>
             <MediaQuery minWidth={992}>
                 <Navbar bg="navcuatan" variant="light" expand="lg">
                     <Container>
-                        <Navbar.Brand style={{ color: "navy" }} href="#home">Navbar</Navbar.Brand>
+                        <Navbar.Brand style={{ color: "navy" }} href='/'>Navbar</Navbar.Brand>
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-false`}
                             aria-labelledby={`offcanvasNavbarLabel-expand-false`}
@@ -68,7 +81,7 @@ function MyNavBar() {
                                             </div>
                                         </div>
                                         <div className="nav-links-items">
-                                            <Link to="/trang2" className='nav-mau-chu'>Trang 2</Link>
+                                            <Link to="/trang3" className='nav-mau-chu'>Trang 3</Link>
                                         </div>
                                     </div>
                                 </Nav>
@@ -80,14 +93,13 @@ function MyNavBar() {
                                                 <Dropdown.Toggle variant="outline" id="dropdown-basic">
                                                     <Image
                                                         className='nav-user-image'
-                                                        src=
-                                                        "https://cdn-icons-png.flaticon.com/512/1077/1077114.png?w=360"
+                                                        src={userImage.UserImage}
                                                         roundedCircle
                                                     />
                                                 </Dropdown.Toggle>
 
                                                 <Dropdown.Menu>
-                                                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                                    <Dropdown.Item href="/changeimage">Change User Image</Dropdown.Item>
                                                     <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                                                     <Dropdown.Item onClick={
                                                         () => {
@@ -109,7 +121,7 @@ function MyNavBar() {
             <MediaQuery maxWidth={991}>
                 <Navbar bg="navcuatan" variant="light" expand="lg">
                     <Container>
-                        <Navbar.Brand style={{ color: "navy" }} href="#home">Navbar</Navbar.Brand>
+                        <Navbar.Brand style={{ color: "navy" }} href="/">Navbar</Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-false`} />
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-false`}
@@ -150,14 +162,38 @@ function MyNavBar() {
                                             </div>
                                         </div>
                                         <div className="nav-links-items">
-                                            <Link to="/trang2" className='nav-mau-chu'>Trang 2</Link>
+                                            <Link to="/trang3" className='nav-mau-chu'>Trang 3</Link>
                                         </div>
                                     </div>
                                 </Nav>
                                 <SearchBar />
-                                <Nav.Item className="m-auto">
-                                    <LoginButton />
-                                </Nav.Item>
+                                {
+                                    checkIfLoggedUser != null ?
+                                        <Nav.Item className="m-auto nav-user-margin">
+                                            <Dropdown>
+                                                <Dropdown.Toggle variant="outline" id="dropdown-basic">
+                                                    <Image
+                                                        className='nav-user-image'
+                                                        src={userImage.UserImage}
+                                                        roundedCircle
+                                                    />
+                                                </Dropdown.Toggle>
+
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item href="/changeimage">Change User Image</Dropdown.Item>
+                                                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                                    <Dropdown.Item onClick={
+                                                        () => {
+                                                            localStorage.removeItem('user');
+                                                            window.location.reload();
+                                                        }}>Logout</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </Nav.Item>
+                                        : <Nav.Item className="m-auto">
+                                            <LoginButton />
+                                        </Nav.Item>
+                                }
                             </Offcanvas.Body>
                         </Navbar.Offcanvas>
                     </Container>

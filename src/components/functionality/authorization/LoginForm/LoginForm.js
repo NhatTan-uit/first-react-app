@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 
 import axios from 'axios';
+
 import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
@@ -52,7 +53,9 @@ function LoginForm() {
     }
 
     return (
-        <Form onSubmit={onPress} encType="multipart/form-data">
+        <Form style={{ border: "1px solid black", borderRadius: "10px", padding: "15px 25px", margin: "5% 20%" }} onSubmit={onPress} encType="multipart/form-data">
+            <h1 style={{ margin: "15px 0px", textAlign: "center" }}>Login Form</h1>
+
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control onChange={e => setTaiKhoan(e.target.value)} ref={uname} type="text" placeholder="Enter email" />
@@ -65,12 +68,11 @@ function LoginForm() {
                 <Form.Label>Password</Form.Label>
                 <Form.Control onChange={e => setMatKhau(e.target.value)} ref={upass} type="password" placeholder="Password" />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
+            <div style={{ textAlign: "center" }}>
+                <Button style={{ margin: "15px 0px" }} variant="primary" type="submit">
+                    Dang Nhap
+                </Button>
+            </div>
         </Form>
     )
 }

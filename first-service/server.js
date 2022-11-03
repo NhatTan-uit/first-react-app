@@ -1,6 +1,7 @@
 /* Them Route - Logic */
 
 const loginRouter = require("./routes/loginroute");
+const userinfomodifyRouter = require("./routes/userinfomodify");
 
 /* Them thu vien */
 const express = require('express')
@@ -30,6 +31,7 @@ connection.once("open", () =>
 
 /* Xu ly logic */
 app.use("/user", loginRouter);
+app.use("/userinfo", userinfomodifyRouter);
 /// url localhost:4000/user/login
 
 

@@ -6,10 +6,12 @@ import UserImageModify from './components/functionality/userinfomodify/UserImage
 import TrangBa from './components/MyBody/TrangBa'
 import TrangHai from './components/MyBody/TrangHai'
 import TrangMot from './components/MyBody/TrangMot'
+import Home from './components/MyBody/Home/Home'
 
-function MyRoutes() {
+function MyRoutes( {toRoute} ) {
   return (
     <Routes>
+      <Route path='/' element={<Home toHome={toRoute} />} />
       <Route path='/trang1' element={<TrangMot />} />
       <Route path='/trang2' element={<TrangHai />} />
       <Route path='/trang3' element={<TrangBa />} />

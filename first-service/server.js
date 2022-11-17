@@ -2,6 +2,7 @@
 
 const loginRouter = require("./routes/loginroute");
 const userinfomodifyRouter = require("./routes/userinfomodify");
+const bookRouter = require("./routes/book");
 
 /* Them thu vien */
 const express = require('express')
@@ -32,6 +33,7 @@ connection.once("open", () =>
 /* Xu ly logic */
 app.use("/user", loginRouter);
 app.use("/userinfo", userinfomodifyRouter);
+app.use("/books", bookRouter);
 /// url localhost:4000/user/login
 
 

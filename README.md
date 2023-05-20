@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## This is instruction code for [Library app](https://github.com/nghia1672001/trongnghia)
+## This is an instruction code for [Library app](https://github.com/nghia1672001/trongnghia)
 
 ## Available Scripts
 
